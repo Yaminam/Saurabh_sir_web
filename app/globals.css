@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  :root {
+    /* Secondary-text colour, as RGB channels. Default = dark grey for light
+       sections (passes 4.5:1 on paper). `.tone-dark` overrides on dark sections. */
+    --muted: 91 87 78; /* #5B574E on paper → ~5.6:1 */
+  }
+  .tone-dark {
+    --muted: 141 137 129; /* #8D8981 on ink → ~5.1:1 */
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    overflow-x: hidden;
+  }
+
+  /* Custom selection — the one moment the accent earns its keep. */
+  ::selection {
+    background-color: theme('colors.accent');
+    color: theme('colors.paper');
+  }
+
+  /* Accessible, on-brand focus ring. Never removed — only styled. */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent');
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  /* Headings default to the display serif; specifics set per-section. */
+  h1, h2, h3 {
+    @apply font-display;
+    font-weight: 400;
+  }
+
+  /* Hide the native cursor on pointer-fine devices — we draw our own. */
+  @media (hover: hover) and (pointer: fine) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none;
+    }
+  }
+}
+
+/* ============================================================
+   VARIABLE-FONT AXIS UTILITIES (Fraunces: opsz/SOFT/WONK)
+   Pair with `font-display`. Weight stays driven by font-weight.
+   ============================================================ */
+@layer utilities {
+  .vf-display {
+    font-variation-settings: 'opsz' 144, 'SOFT' 0, 'WONK' 0;
+  }
+  .vf-text {
+    font-variation-settings: 'opsz' 28, 'SOFT' 0, 'WONK' 0;
+  }
+
+  /* Hairline divider helpers */
+  .hairline {
+    @apply border-bone;
+    border-width: 0.5px;
+  }
+
+  /* Default-grayscale media that warms to color (case studies). */
+  .img-mono {
+    filter: grayscale(1) contrast(1.02);
+    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .group:hover .img-mono,
+  .img-mono.is-color {
+    filter: grayscale(0) contrast(1);
+  }
+
+  /* Smart underline: 1.5px below baseline, draws in from the left. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1.5px;
+    padding-bottom: 2px;
+    transition: background-size 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1.5px;
+  }
+
+  /* Underline that draws when an ancestor .group is hovered/focused. */
+  .underline-hover {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1.5px;
+    padding-bottom: 2px;
+    transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .group:hover .underline-hover,
+  .group:focus-visible .underline-hover {
+    background-size: 100% 1.5px;
+  }
+
+  /* Editorial drop cap on the opening paragraph. */
+  .dropcap::first-letter {
+    font-family: var(--font-display), Georgia, serif;
+    float: left;
+    font-size: 4.4em;
+    line-height: 0.74;
+    padding-right: 0.09em;
+    margin-top: 0.07em;
+    font-weight: 400;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* ============================================================
+   LENIS SMOOTH SCROLL
+   ============================================================ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ============================================================
+   GRAIN — fixed, 4% noise, never intercepts pointer events.
+   Rendered as a pseudo-element so accessibility-contrast tooling
+   (axe-core) does not composite this blended overlay into text colors.
+   ============================================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ============================================================
+   REDUCED MOTION — reveals become instant, marquees stop,
+   smooth scroll yields to native.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  body::after {
+    display: none;
+  }
+}
+
+/* ============================================================
+   PRINT — clean editorial document, no UI chrome
+   ============================================================ */
+@media print {
+  body::after,
+  .no-print,
+  nav,
+  [data-cursor],
+  [data-section-index],
+  [data-scroll-indicator] {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a {
+    text-decoration: underline;
+  }
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 10px;
+    color: #555 !important;
+  }
+  section {
+    padding: 24px 0 !important;
+    page-break-inside: avoid;
+  }
+}
