@@ -41,7 +41,20 @@
       "Bash(rm -f components/motion/Marquee.tsx components/ui/Counter.tsx components/ui/ReadingProgress.tsx)",
       "Bash(curl -s -o /dev/null -w \"live on 4000 = %{http_code}\\\\n\" http://localhost:4000/)",
       "Bash(rm -f components/ui/Loader.tsx)",
-      "Bash(grep -rn \"Loader\" app components)"
+      "Bash(grep -rn \"Loader\" app components)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:www.garagecollective.agency)",
+      "Bash(curl -sL \"https://www.garagecollective.agency/\" -o gc_home.html)",
+      "Bash(curl -sL \"https://www.garagecollective.agency/_next/static/chunks/0f6f2~e_6lol1.css\" -o gc.css)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(grep -qiE \"ready|started|local:|error\" \"C:\\\\Users\\\\tshre\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-tshre-Desktop-sourabh-sir-website\\\\485da53d-0831-48dd-b338-59d3963e3a50\\\\tasks\\\\biwu6wf6x.output\")",
+      "Bash(break)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/about)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code}\\\\n\" http://localhost:3000/)"
     ]
   }
 }

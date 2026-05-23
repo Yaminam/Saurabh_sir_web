@@ -48,7 +48,7 @@ export default async function OpengraphImage() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', width: 64, height: 6, background: '#FF3B1F', marginBottom: 32 }} />
+          <div style={{ display: 'flex', width: 64, height: 6, background: '#007B6E', marginBottom: 32 }} />
           <div style={{ display: 'flex', fontSize: 80, lineHeight: 1.04, letterSpacing: -2, maxWidth: 1000 }}>
             Building brands that outlive the algorithm.
           </div>

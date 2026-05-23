@@ -29,6 +29,7 @@ export default function Capabilities() {
               >
                 What I do
               </h2>
+              <span className="mt-6 block h-px w-12 bg-accent" aria-hidden />
               <p className="mt-6 max-w-xs text-body-m text-muted text-pretty">{portfolioIntro}</p>
             </Reveal>
             <Reveal className="mt-10 lg:mt-auto lg:pt-12">
@@ -53,8 +54,8 @@ export default function Capabilities() {
                       data-cursor-label="Discuss"
                       className="group block border-b border-bone outline-none"
                     >
-                      <div className="-mx-4 flex min-h-[6rem] items-center gap-5 px-4 py-4 transition-colors duration-300 ease-swap group-hover:bg-ink group-hover:text-paper group-focus-visible:bg-ink group-focus-visible:text-paper md:gap-8">
-                        <span className="w-8 shrink-0 font-mono text-meta text-muted transition-colors group-hover:text-paper/50 group-focus-visible:text-paper/50">
+                      <div className="-mx-4 flex min-h-[6rem] items-center gap-5 rounded-[2px] border-l-2 border-transparent px-4 py-4 transition-colors duration-300 ease-swap group-hover:border-accent group-hover:bg-ink group-hover:text-paper group-focus-visible:border-accent group-focus-visible:bg-ink group-focus-visible:text-paper md:gap-8">
+                        <span className="w-8 shrink-0 font-mono text-meta text-accent transition-colors group-hover:text-paper/50 group-focus-visible:text-paper/50">
                           {c.num}
                         </span>
                         <span className="flex-1 font-display text-heading-l leading-[1.05] tracking-[-0.01em] text-balance">
@@ -64,7 +65,7 @@ export default function Capabilities() {
                           {c.note}
                         </span>
                         <span
-                          className="shrink-0 font-mono text-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                          className="shrink-0 font-mono text-xl text-accent transition-[transform,color] duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-paper group-focus-visible:text-paper"
                           aria-hidden
                         >
                           ↗

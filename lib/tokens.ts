@@ -12,7 +12,7 @@ export const color = {
   bone: '#E8E4DC', // section dividers, hairlines
   graphite: '#1A1A1A', // dark sections bg
   mist: '#6E6A63', // secondary text
-  accent: '#FF3B1F', // ONE accent — molten red-orange, used <5% of UI
+  accent: '#007B6E', // ONE accent — Garage Collective green, used <5% of UI
   signal: '#C8FF00', // acid lime — reserved for one moment per page max
 } as const;
 

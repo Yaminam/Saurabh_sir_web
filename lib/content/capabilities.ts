@@ -1,44 +1,43 @@
 /**
- * Portfolio / services — the SIX categories exactly as listed on
- * activeindian.com/portfolio/. Sub-services kept as the description (the
- * original "Branding Magic / Negotiation Ninja" labels are cleaned to plain
- * language to match this site's voice; the substance is unchanged).
+ * "What I do" — the work Garage Collective spans, as described by Saurabh Gupta
+ * (LinkedIn /in/activeindian). An AI-first creative and growth group: strategy,
+ * storytelling, media, automation, production and brand-IP creation, end to end.
  */
 
 export type Capability = { num: string; title: string; note: string };
 
 export const portfolioIntro =
-  'Turning creative visions into brands. Where ideas come to life — across creative, media, go-to-market, performance, transformation and automation.';
+  'An AI-first creative and growth group — strategy, storytelling, media, automation, performance marketing, content production and brand-IP creation, end to end.';
 
 export const capabilities: Capability[] = [
   {
     num: '01',
-    title: 'Creative services',
-    note: 'Branding, content and design — memorable identities, storytelling across social and video, logos and websites.',
+    title: 'Brand strategy & campaigns',
+    note: 'Creative direction, communication strategy, brand launches, repositioning and integrated campaigns.',
   },
   {
     num: '02',
-    title: 'Media buying & planning',
-    note: 'Media strategy and negotiation — navigating for visibility and securing the right placements and rates.',
+    title: 'Media & performance marketing',
+    note: 'Digital growth, lead generation, e-commerce campaigns, media planning and ROI-focused execution.',
   },
   {
     num: '03',
-    title: 'Go-to-market strategy',
-    note: 'Launch orchestration and consumer insight — reading market behaviour before entering it.',
+    title: 'Film, content & production',
+    note: 'Ad films, brand films, anthems, launch videos, documentaries, music and IP-led content.',
   },
   {
     num: '04',
-    title: 'Performance marketing',
-    note: 'Metrics, conversion and campaign ROI, with relentless optimisation and refinement.',
+    title: 'AI, automation & transformation',
+    note: 'AI-led marketing workflows, automation systems, content engines, websites, funnels and growth infrastructure.',
   },
   {
     num: '05',
-    title: 'Digital transformation',
-    note: 'Digital guidance and technology adoption — change that actually lands.',
+    title: 'Government & institutional',
+    note: 'Large-format communication, event strategy, public-sector campaigns, skilling and digital enablement.',
   },
   {
     num: '06',
-    title: 'Marketing automation',
-    note: 'System efficiency and audience-level personalisation.',
+    title: 'Original IP & content',
+    note: 'Original IPs across content, music, education and brand-led entertainment.',
   },
 ];
